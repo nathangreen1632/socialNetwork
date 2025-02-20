@@ -1,13 +1,13 @@
-import express, {Router} from "express";
+import express, {Router} from 'express';
 import { getUser as getUsers,
+         getAllUsers,
          createUser,
          updateUser,
-         deleteUser } from "../controllers/userController.js";
+         deleteUser } from '../controllers/userController.js';
 
 const router: Router = express.Router();
 
-// ✅ Get all users
-router.get("/", async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     try {
         await getUsers(req, res);
     } catch (error) {
@@ -15,8 +15,16 @@ router.get("/", async (req, res, next) => {
     }
 });
 
-// ✅ Create a new user
-router.post("/", async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
+    try {
+        await getAllUsers(req, res);
+    } catch (error) {
+        next(error);
+    }
+});
+
+
+router.post('/', async (req, res, next) => {
       try {
           await createUser(req, res);
       } catch (error) {
@@ -24,8 +32,7 @@ router.post("/", async (req, res, next) => {
       }
   });
 
-// ✅ Update a user by ID
-router.put("/:id", async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
     try {
         await updateUser(req, res);
     } catch (error) {
@@ -33,8 +40,7 @@ router.put("/:id", async (req, res, next) => {
     }
 });
 
-// ✅ Delete a user by ID
-router.delete("/:id", async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
     try {
         await deleteUser(req, res);
     } catch (error) {
