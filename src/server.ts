@@ -12,14 +12,7 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/thoughts', thoughtRoutes);
 
-mongoose.connect(process.env.MONGO_URI ?? 'mongodb://localhost:27017/socialNetwork_db', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-} as mongoose.ConnectOptions)
-  .then(() => {
-    console.log('Connected to MongoDB!');
-
-  })
+mongoose.connect(process.env.MONGO_URI ?? 'mongodb://localhost:27017/socialNetwork_db').then(() => console.log('Connected to MongoDB!'));
 
 const PORT: string = process.env.PORT ?? '3000';
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
