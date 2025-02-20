@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const reactionSchema = new mongoose.Schema({
   reactionBody: { type: String, required: true },
@@ -15,4 +15,4 @@ const thoughtSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Thought", thoughtSchema);
+export default mongoose.model('Thought', thoughtSchema);
