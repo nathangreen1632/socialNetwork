@@ -7,8 +7,9 @@ export const getThoughts = async (_req: Request, res: Response): Promise<void> =
     const thoughts = await Thought.find();
     res.json(thoughts);
   } catch (err) {
-    console.error("🔥 Error retrieving thoughts:", err);
-    res.status(500).json({ message: 'Error retrieving thoughts', error: err });
+    console.error('Error retrieving thoughts...', err);
+    res.status(500).json({ message: 'Error retrieving thoughts...', error: err });
+    return;
   }
 };
 
@@ -17,14 +18,15 @@ export const getThoughtById = async (req: Request, res: Response): Promise<void>
     const thought = await Thought.findById(req.params.id);
 
     if (!thought) {
-      res.status(404).json({ message: 'Thought not found' });
+      res.status(404).json({ message: 'Thought not found...' });
       return;
     }
 
     res.json(thought);
   } catch (err) {
-    console.error("🔥 Error retrieving thought:", err);
-    res.status(500).json({ message: 'Error retrieving thought', error: err });
+    console.error('Error retrieving thought:', err);
+    res.status(500).json({ message: 'Error retrieving thought...', error: err });
+    return;
   }
 };
 
@@ -33,7 +35,7 @@ export const createThought = async (req: Request, res: Response): Promise<void> 
     const { thoughtText, username, userId } = req.body;
 
     if (!thoughtText || !username || !userId) {
-      res.status(400).json({ message: 'Missing requirements...' });
+      res.status(400).json({ message: 'Missing required fields...' });
       return;
     }
 
@@ -52,8 +54,9 @@ export const createThought = async (req: Request, res: Response): Promise<void> 
 
     res.json(newThought);
   } catch (err) {
-    console.error("Error creating thought...", err);
+    console.error('Error creating thought...', err);
     res.status(500).json({ message: 'Error creating thought...', error: err });
+    return;
   }
 };
 
@@ -72,8 +75,9 @@ export const updateThought = async (req: Request, res: Response): Promise<void> 
 
     res.json(updatedThought);
   } catch (err) {
-    console.error("Error updating thought...", err);
+    console.error('Error updating thought...', err);
     res.status(500).json({ message: 'Error updating thought...', error: err });
+    return;
   }
 };
 
@@ -88,8 +92,9 @@ export const deleteThought = async (req: Request, res: Response): Promise<void> 
 
     res.json({ message: 'Thought has been deleted...' });
   } catch (err) {
-    console.error("Error deleting thought...", err);
+    console.error('Error deleting thought...', err);
     res.status(500).json({ message: 'Error deleting thought. Please try again...', error: err });
+    return;
   }
 };
 
@@ -107,8 +112,9 @@ export const addReaction = async (req: Request, res: Response): Promise<void> =>
 
     res.json(thought);
   } catch (err) {
-    console.error("Error adding reaction:", err);
+    console.error('Error adding reaction... Please try again.', err);
     res.status(500).json({ message: 'Error adding reaction... Please try again.', error: err });
+    return;
   }
 };
 
@@ -133,7 +139,8 @@ export const removeReaction = async (req: Request, res: Response): Promise<void>
 
     res.json(thought);
   } catch (err) {
-    console.error("🔥 Error removing reaction... Please try again.", err);
+    console.error('Error removing reaction... Please try again.', err);
     res.status(500).json({ message: 'Error removing reaction... Please try again.', error: err });
+    return;
   }
 };
