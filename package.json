@@ -1,0 +1,43 @@
+{
+  "name": "socialNetwork",
+  "version": "1.0.0",
+  "description": "UTSA Challenge 17 - Social Network with MongoDB, Node.js, and Express",
+  "main": "dist/server.js",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "npm run build",
+    "start": "node dist/server.js",
+    "dev": "nodemon --ext ts --exec ts-node src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathangreen1632/socialNetwork.git"
+  },
+  "keywords": [
+    "Social",
+    "Network",
+    "Express",
+    "Node.js",
+    "MongoDB"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathangreen1632/socialNetwork/issues"
+  },
+  "homepage": "https://github.com/nathangreen1632/socialNetwork#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.10.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^22.13.4",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
