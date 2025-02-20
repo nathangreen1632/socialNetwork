@@ -1,4 +1,4 @@
-# <strong> Social Network API </strong>
+# <strong> Social Network </strong>
 
 #### <span style="color:royalblue">License</span>
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
