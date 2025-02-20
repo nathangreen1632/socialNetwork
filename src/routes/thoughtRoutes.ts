@@ -1,4 +1,4 @@
-import express, {Router} from "express";
+import express, {Router} from 'express';
 import {
   getThoughts,
   getThoughtById,
@@ -7,29 +7,22 @@ import {
   deleteThought,
   addReaction,
   removeReaction
-} from "../controllers/thoughtController.js";
+} from '../controllers/thoughtController.js';
 
 const router: Router = express.Router();
 
-// ✅ Get all thoughts
-router.get("/", getThoughts);
+router.get('/', getThoughts);
 
-// ✅ Get a thought by ID
-router.get("/:id", getThoughtById);
+router.get('/:id', getThoughtById);
 
-// ✅ Create a new thought
-router.post("/", createThought);
+router.post('/', createThought);
 
-// ✅ Update a thought by ID
-router.put("/:id", updateThought);
+router.put('/:id', updateThought);
 
-// ✅ Delete a thought by ID
-router.delete("/:id", deleteThought);
+router.delete('/:id', deleteThought);
 
-// ✅ Add a reaction to a thought
-router.post("/:thoughtId/reactions", addReaction);
+router.post('/:thoughtId/reactions', addReaction);
 
-// ✅ Remove a reaction from a thought
-router.delete("/:thoughtId/reactions/:reactionId", removeReaction);
+router.delete('/:thoughtId/reactions/:reactionId', removeReaction);
 
 export default router;
