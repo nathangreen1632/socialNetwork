@@ -45,8 +45,9 @@
    - [Development Tools](#development-tools)
 - [Project Structure](#project-structure)
 - [API Routes Documentation](#api-routes-documentation)
-    - [Thought Routes - `/api/thoughts/`](#thought-routes---api-thoughts)
-    - [User Routes - `/api/users/`](#user-routes---api-users)
+    - [Thought Routes](#thought-routes---api-thoughts)
+    - [User Routes](#user-routes---api-users)
+    - [Reactions Routes](#reactions-routes---api-reactions)
     - [How to Use These Routes in Postman](#how-to-use-these-routes-in-postman)
 - [Setup & Installation Guide](#setup--installation-guide)
     - [Prerequisites](#prerequisites)
@@ -102,7 +103,7 @@ Photo Credit - [Geeks-for-Geeks.org](https://www.geeksforgeeks.org/mvc-design-pa
 </div>
 
 ## Tech Stack
-[![My Skills](https://skillicons.dev/icons?i=js,ts,nodejs,express,mongodb,mongoose,)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=js,ts,nodejs,express,mongodb,postman)](https://skillicons.dev)
 
 - <span id="backend">**Backend**</span>: Node.js with Express.js
 - <span id="database">**Database**</span>: MongoDB with Mongoose ORM
@@ -155,37 +156,42 @@ This document outlines all available API routes, their methods, descriptions, an
 
 ---
 
-## <span id="thought-routes---api-thoughts">**Thought Routes - `/api/thoughts/`**</span>
+### <span id="user-routes---api-users">**User Routes**</span>
+Handles operations related to users.
+
+| Method | Route   | Description              |
+|--------|---------|--------------------------|
+| GET    | `/`     | Fetch all users          |
+| GET    | `/:id`  | Fetch a user by ID       |
+| POST   | `/`     | Create a new user        |
+| PUT    | `/:id`  | Update an existing user  |
+| DELETE | `/:id`  | Delete a user            |
+
+
+
+### <span id="thought-routes---api-thoughts">**Thought Routes**</span>
 Handles operations related to thoughts.
 
-| Method | Route | Description | How It Works |
-|--------|-------|-------------|--------------|
-| **GET** | `/api/thoughts/` | Retrieve all thoughts. | Calls `getThoughts()` to fetch all thoughts from the database and return them as JSON. |
-| **GET** | `/api/thoughts/:id` | Retrieve a specific thought by ID. | Calls `getThoughtById(req, res)`, which finds the thought using `id` from request parameters and returns it. |
-| **POST** | `/api/thoughts/` | Create a new thought. | Calls `createThought(req, res)`, extracting `thoughtText`, `username`, and `userId` from the request body. It then creates a new thought and links it to the user. |
-| **PUT** | `/api/thoughts/:id` | Update a thought by ID. | Calls `updateThought(req, res)`, updating an existing thought based on the provided `id` and request body data. |
-| **DELETE** | `/api/thoughts/:id` | Delete a thought by ID. | Calls `deleteThought(req, res)`, locating the thought by `id` and deleting it. |
-| **POST** | `/api/thoughts/:thoughtId/reactions` | Add a reaction to a thought. | Calls `addReaction(req, res)`, which locates the `thoughtId` and pushes a new reaction from `req.body`. |
-| **DELETE** | `/api/thoughts/:thoughtId/reactions/:reactionId` | Remove a reaction from a thought. | Calls `removeReaction(req, res)`, finding the `reactionId` inside `thoughtId` and deleting it. |
+| Method | Route   | Description                  |
+|--------|---------|------------------------------|
+| GET    | `/`     | Fetch all thoughts           |
+| GET    | `/:id`  | Fetch a thought by ID        |
+| POST   | `/`     | Create a new thought         |
+| PUT    | `/:id`  | Update an existing thought   |
+| DELETE | `/:id`  | Delete a thought             |
 
-<div style="text-align: right;">
-  <a href="#top">
-    <img src="https://img.shields.io/badge/Back%20to%20Top-%E2%86%91-royalblue" alt="Back to Top">
-  </a>
-</div>
+### <span id="reactions-routes---api-reactions">**Reactions Routes**</span>
+Handles operations related to reactions.
 
----
-
-## <span id="user-routes---api-users">**User Routes - `/api/users/`**</span>
-Handles user management operations.
-
-| Method | Route | Description | How It Works |
-|--------|-------|-------------|--------------|
-| **GET** | `/api/users/` | Retrieve all users. | Calls `getUsers(req, res)`, fetching all users from the database and returning them as JSON. |
-| **GET** | `/api/users/:id` | Retrieve a user by ID. | Calls `getUser(req, res)`, finding the user by `id` and returning their data. |
-| **POST** | `/api/users/` | Create a new user. | Calls `createUser(req, res)`, extracting `username` and `email` from the request body and creating a new user. |
-| **PUT** | `/api/users/:id` | Update a user by ID. | Calls `updateUser(req, res)`, updating the user’s details based on `id` and request body data. |
-| **DELETE** | `/api/users/:id` | Delete a user by ID. | Calls `deleteUser(req, res)`, locating the user by `id` and deleting them. |
+| Method | Route          | Description                     |
+|--------|---------------|---------------------------------|
+| GET    | `/`           | Fetch all reactions             |
+| GET    | `/:id`        | Fetch a reaction by ID          |
+| POST   | `/`           | Create a new reaction           |
+| PUT    | `/:id`        | Update an existing reaction     |
+| DELETE | `/:id`        | Delete a reaction              |
+| POST   | `/:id/add`    | Add a reaction to a thought    |
+| DELETE | `/:id/remove` | Remove a reaction from a thought |
 
 <div style="text-align: right;">
   <a href="#top">
@@ -245,11 +251,11 @@ Before you begin, ensure you have the following installed on your machine:
 ### **Clone the Repository**
 To get started, clone the project from GitHub:
 ```bash
-git clone git@github.com:nathangreen1632/socialNetwork.git
+    git clone git@github.com:nathangreen1632/socialNetwork.git
 ```
 Navigate to the project directory:
 ```bash
-cd socialNetwork
+    cd socialNetwork
 ```
 
 ---
@@ -257,7 +263,7 @@ cd socialNetwork
 ### Install Dependencies
 Install all necessary dependencies by running:
 ```bash
-npm install
+    npm install
 ```
 
 This will install all dependencies listed in the `package.json` file.
@@ -267,7 +273,7 @@ This will install all dependencies listed in the `package.json` file.
 ### **Configuration**
 Ensure your MongoDB server is running. You can start it using:
 ```bash
-mongod
+    mongod
 ```
 
 ---
@@ -275,7 +281,7 @@ mongod
 ### **Running the Application**
 To start the server, run:
 ```bash
-npm start
+    npm start
 ```
 The server will start, and you should see a message indicating that it is running.
 
@@ -289,7 +295,7 @@ Use **Postman** to test the API endpoints. Refer to the [API Routes Documentatio
 ### **Seeding the Database**
 To populate the database with initial data, run:
 ```bash
-npm run seed
+    npm run seed
 ```
 This will execute the seed script, populating the database with sample users and thoughts.
 
@@ -298,7 +304,7 @@ This will execute the seed script, populating the database with sample users and
 ### **Development**
 For development purposes, you can use:
 ```bash
-npm run dev
+    npm run dev
 ```
 This command will start the server in development mode, with hot-reloading enabled.
 
@@ -308,7 +314,7 @@ This command will start the server in development mode, with hot-reloading enabl
 
 To package the application for deployment, use:
 ```bash
-npm run build
+    npm run build
 ```
 This will compile the TypeScript code into JavaScript and place it in the `dist` directory.
 
@@ -372,4 +378,3 @@ This API serves as the backend for a simple social networking platform, allowing
     <img src="https://img.shields.io/badge/Back%20to%20Top-%E2%86%91-royalblue" alt="Back to Top">
   </a>
 </div>
-
