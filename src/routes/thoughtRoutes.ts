@@ -4,9 +4,7 @@ import {
   getThoughtById,
   createThought,
   updateThought,
-  deleteThought,
-  addReaction,
-  removeReaction
+  deleteThought
 } from '../controllers/thoughtController.js';
 
 const router: Router = express.Router();
@@ -20,9 +18,5 @@ router.post('/', createThought);
 router.put('/:id', updateThought);
 
 router.delete('/:id', deleteThought);
-
-router.post('/:thoughtId/reactions', addReaction);
-
-router.delete('/:thoughtId/reactions/:reactionId', removeReaction);
 
 export default router;
