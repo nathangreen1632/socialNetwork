@@ -6,8 +6,8 @@ import reactionRoutes from "./reaectionRoutes.js";
 const app: Express = express();
 const router: Router = express.Router();
 
-app.use('.api/users', userRoutes);
-app.use('.api/thoughts', thoughtRoutes);
-app.use('.api/reactions', reactionRoutes);
+app.use('/users', userRoutes);
+app.use('/thoughts', thoughtRoutes);
+app.use('/reactions', reactionRoutes);
 
 export default router;
