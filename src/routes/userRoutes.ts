@@ -1,51 +1,23 @@
 import express, {Router} from 'express';
-import { getUser as getUsers,
+import { getUser,
          getAllUsers,
          createUser,
          updateUser,
-         deleteUser } from '../controllers/userController.js';
+         deleteUser,
+         deleteAllUsers} from '../controllers/userController.js';
 
 const router: Router = express.Router();
 
-router.get('/', async (req, res, next) => {
-    try {
-        await getUsers(req, res);
-    } catch (error) {
-        next(error);
-    }
-});
+router.get('/', getAllUsers);
 
-router.get('/:id', async (req, res, next) => {
-    try {
-        await getAllUsers(req, res);
-    } catch (error) {
-        next(error);
-    }
-});
+router.get('/:id', getUser);
 
+router.post('/', createUser);
 
-router.post('/', async (req, res, next) => {
-      try {
-          await createUser(req, res);
-      } catch (error) {
-          next(error);
-      }
-  });
+router.put('/:id', updateUser);
 
-router.put('/:id', async (req, res, next) => {
-    try {
-        await updateUser(req, res);
-    } catch (error) {
-        next(error);
-    }
-});
+router.delete('/:id', deleteUser);
 
-router.delete('/:id', async (req, res, next) => {
-    try {
-        await deleteUser(req, res);
-    } catch (error) {
-        next(error);
-    }
-});
+router.delete('/', deleteAllUsers);
 
 export default router;
