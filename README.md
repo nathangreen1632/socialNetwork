@@ -155,43 +155,52 @@ Photo Credit - [Geeks-for-Geeks.org](https://www.geeksforgeeks.org/mvc-design-pa
 This document outlines all available API routes, their methods, descriptions, and how they work.
 
 ---
+### <span id="friend-routes">Friend Routes</span>
+Handles operations related to friends.
+
+| Method   | Route                      | Description            |
+|----------|----------------------------|------------------------|
+| **POST** | `/api/friends/:friendId`   | Add a friend          |
+| **DELETE** | `/api/friends/:friendId` | Remove a friend       |
 
 ### <span id="user-routes---api-users">**User Routes**</span>
 Handles operations related to users.
 
-| Method | Route   | Description              |
-|--------|---------|--------------------------|
-| GET    | `/`     | Fetch all users          |
-| GET    | `/:id`  | Fetch a user by ID       |
-| POST   | `/`     | Create a new user        |
-| PUT    | `/:id`  | Update an existing user  |
-| DELETE | `/:id`  | Delete a user            |
+| Method   | Route                      | Description                 |
+|----------|----------------------------|-----------------------------|
+| **GET**  | `/api/users/`              | Retrieve all users         |
+| **GET**  | `/api/users/:id`           | Retrieve a user by ID      |
+| **POST** | `/api/users/`              | Create a new user          |
+| **PUT**  | `/api/users/:id`           | Update a user by ID        |
+| **DELETE** | `/api/users/:id`         | Delete a user by ID        |
+| **DELETE** | `/api/users/`            | Delete all users           |
 
 
 
 ### <span id="thought-routes---api-thoughts">**Thought Routes**</span>
 Handles operations related to thoughts.
 
-| Method | Route   | Description                  |
-|--------|---------|------------------------------|
-| GET    | `/`     | Fetch all thoughts           |
-| GET    | `/:id`  | Fetch a thought by ID        |
-| POST   | `/`     | Create a new thought         |
-| PUT    | `/:id`  | Update an existing thought   |
-| DELETE | `/:id`  | Delete a thought             |
+| Method   | Route                      | Description                   |
+|----------|----------------------------|-------------------------------|
+| **GET**  | `/api/thoughts/`           | Retrieve all thoughts         |
+| **GET**  | `/api/thoughts/:id`        | Retrieve a single thought by ID |
+| **POST** | `/api/thoughts/`           | Create a new thought          |
+| **PUT**  | `/api/thoughts/:id`        | Update a thought by ID        |
+| **DELETE** | `/api/thoughts/:id`      | Delete a thought by ID        |
+
 
 ### <span id="reactions-routes---api-reactions">**Reactions Routes**</span>
 Handles operations related to reactions.
 
-| Method | Route          | Description                     |
-|--------|---------------|---------------------------------|
-| GET    | `/`           | Fetch all reactions             |
-| GET    | `/:id`        | Fetch a reaction by ID          |
-| POST   | `/`           | Create a new reaction           |
-| PUT    | `/:id`        | Update an existing reaction     |
-| DELETE | `/:id`        | Delete a reaction              |
-| POST   | `/:id/add`    | Add a reaction to a thought    |
-| DELETE | `/:id/remove` | Remove a reaction from a thought |
+| Method   | Route                                           | Description                        |
+|----------|-----------------------------------------------|------------------------------------|
+| **GET**  | `/api/reactions/`                             | Retrieve all reactions            |
+| **GET**  | `/api/reactions/:id`                          | Retrieve a single reaction by ID  |
+| **POST** | `/api/reactions/`                             | Create a new reaction             |
+| **PUT**  | `/api/reactions/:id`                          | Update a reaction by ID           |
+| **DELETE** | `/api/reactions/:id`                        | Delete a reaction by ID           |
+| **POST** | `/api/reactions/:reactionId/reactions`        | Add a reaction to a reaction      |
+| **DELETE** | `/api/reactions/:reactionId/reactions/:reactionId` | Remove a reaction from a reaction |
 
 <div style="text-align: right;">
   <a href="#top">
@@ -378,3 +387,45 @@ This API serves as the backend for a simple social networking platform, allowing
     <img src="https://img.shields.io/badge/Back%20to%20Top-%E2%86%91-royalblue" alt="Back to Top">
   </a>
 </div>
+
+
+# API Routes
+
+## Thought Routes+
+
+| Method   | Route                      | Description                   |
+|----------|----------------------------|-------------------------------|
+| **GET**  | `/api/thoughts/`           | Retrieve all thoughts         |
+| **GET**  | `/api/thoughts/:id`        | Retrieve a single thought by ID |
+| **POST** | `/api/thoughts/`           | Create a new thought          |
+| **PUT**  | `/api/thoughts/:id`        | Update a thought by ID        |
+| **DELETE** | `/api/thoughts/:id`      | Delete a thought by ID        |
+
+## Reaction Routes
+
+| Method   | Route                                           | Description                        |
+|----------|-----------------------------------------------|------------------------------------|
+| **GET**  | `/api/reactions/`                             | Retrieve all reactions            |
+| **GET**  | `/api/reactions/:id`                          | Retrieve a single reaction by ID  |
+| **POST** | `/api/reactions/`                             | Create a new reaction             |
+| **PUT**  | `/api/reactions/:id`                          | Update a reaction by ID           |
+| **DELETE** | `/api/reactions/:id`                        | Delete a reaction by ID           |
+| **POST** | `/api/reactions/:reactionId/reactions`        | Add a reaction to a reaction      |
+| **DELETE** | `/api/reactions/:reactionId/reactions/:reactionId` | Remove a reaction from a reaction |
+
+## Friend Routes
+| Method   | Route                      | Description            |
+|----------|----------------------------|------------------------|
+| **POST** | `/api/friends/:friendId`   | Add a friend          |
+| **DELETE** | `/api/friends/:friendId` | Remove a friend       |
+
+## User Routes
+
+| Method   | Route                      | Description                 |
+|----------|----------------------------|-----------------------------|
+| **GET**  | `/api/users/`              | Retrieve all users         |
+| **GET**  | `/api/users/:id`           | Retrieve a user by ID      |
+| **POST** | `/api/users/`              | Create a new user          |
+| **PUT**  | `/api/users/:id`           | Update a user by ID        |
+| **DELETE** | `/api/users/:id`         | Delete a user by ID        |
+| **DELETE** | `/api/users/`            | Delete all users           |
