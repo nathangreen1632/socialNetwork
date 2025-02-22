@@ -4,6 +4,7 @@ const thoughtSchema = new mongoose.Schema(
   {
     thoughtText: { type: String, required: true },
     username: { type: String, required: true },
+    name: { type: String, required: true },
     reactions: [],
   },
   { timestamps: true }
