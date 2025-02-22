@@ -8,7 +8,7 @@ dotenv.config();
 const app: Express = express();
 
 app.use(express.json());
-app.use('api/', routes);
+app.use('/api', routes);
 
 mongoose.connect(process.env.MONGO_URI ?? 'mongodb://localhost:27017/socialNetwork_db').then(() => console.log('Connected to MongoDB!'));
 
