@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import User from '../models/user.js';
+import bcrypt from 'bcrypt'; // Ensure bcrypt is installed for password hashing
 
 export const getAllUsers = async (_req: Request, res: Response): Promise<void> => {
   try {
@@ -31,14 +32,23 @@ export const getUser = async (req: Request, res: Response): Promise<void> => {
 
 export const createUser = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, name, friends } = req.body;
 
-    if (!username || !email || !password) {
+    if (!username || !email || !password || !name) {
       res.status(400).json({ message: 'Missing required fields...' });
       return;
     }
 
-    const newUser = await User.create({ username, email, password });
+    // Hash the password before saving
+    const hashedPassword = await bcrypt.hash(password, 4);
+
+    const newUser = await User.create({
+      username,
+      email,
+      password: hashedPassword,
+      name,
+      friends: friends || [] // Default to an empty array if no friends provided
+    });
 
     res.json(newUser);
   } catch (err) {
@@ -48,12 +58,13 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
   }
 };
 
+
 export const updateUser = async (req: Request, res: Response): Promise<void> => {
   try {
     const { username, email, password } = req.body;
 
     if (!username || !email || !password) {
-      res.status(400).json({ message: 'Missing required fields...' });
+      res.status(400).json({ message: 'Missing required fields... username, email, password are required' });
       return;
     }
 
