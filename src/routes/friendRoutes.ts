@@ -1,10 +1,18 @@
-import express, { Router } from "express";
-import { addFriend, removeFriend } from "../controllers/friendController.js";
+import { Router } from "express";
+import { addFriend, removeFriend, getFriend, getAllFriends } from "../controllers/friendController.js";
 
-const router: Router = express.Router();
+const router: Router = Router();
 
-router.post('/username', addFriend);
+// ✅ Retrieve all friends (global list)
+router.get("/", getAllFriends);
 
-router.delete('/username', removeFriend);
+// ✅ Retrieve a specific friend from a user's friend list
+router.get("/get", getFriend);
+
+// ✅ Add a friend without requiring userId
+router.post("/add", addFriend);
+
+// ✅ Remove a friend without requiring userId
+router.delete("/remove", removeFriend);
 
 export default router;
