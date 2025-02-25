@@ -386,7 +386,7 @@ For any questions or support, feel free to reach out to the project maintainer:
 
 ## **Video Walkthrough**
 
-[![Watch the video](https://img.youtube.com/vi/your-video-id/0.jpg)](https://www.youtube.com/watch?v=your-video-id)
+[![Watch the video](https://i9.ytimg.com/vi_webp/GzMsHHbJN_g/mqdefault.webp?v=67be149d&sqp=CNyo-L0G&rs=AOn4CLAS3CX7XUMpnBG4hToO-btTWoiXmw)](https://youtu.be/GzMsHHbJN_g)
 
 ## Future Enhancements
 - Add **user authentication** (JWT-based login/logout)
