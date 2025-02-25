@@ -1,4 +1,4 @@
-import express, {Router} from "express";
+import {Router} from "express";
 import {getReaction,
         getReactionById,
         createReaction,
@@ -8,7 +8,7 @@ import {getReaction,
         removeReaction
 } from "../controllers/reactionController.js";
 
-const router: Router = express.Router();
+const router: Router = Router();
 
 router.get('/', getReaction);
 
@@ -22,6 +22,7 @@ router.delete('/:id', deleteReaction);
 
 router.post('/:reactionId/reactions', addReaction);
 
-router.delete('/:reactionId/reactions/:reactionId', removeReaction);
+router.delete('/:reactionId/reactions', removeReaction);
+
 
 export default router;
