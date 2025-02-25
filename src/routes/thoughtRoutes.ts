@@ -1,4 +1,4 @@
-import express, {Router} from 'express';
+import {Router} from 'express';
 import {
   getThoughts,
   getThoughtById,
@@ -7,7 +7,7 @@ import {
   deleteThought
 } from '../controllers/thoughtController.js';
 
-const router: Router = express.Router();
+const router: Router = Router();
 
 router.get('/', getThoughts);
 
