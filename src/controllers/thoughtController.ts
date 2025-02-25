@@ -35,7 +35,7 @@ export const createThought = async (req: Request, res: Response): Promise<void> 
     const { thoughtText, username, userId } = req.body;
 
     if (!thoughtText || !username || !userId) {
-      res.status(400).json({ message: 'Missing required fields...' });
+      res.status(400).json({ message: 'Missing required fields... thoughtText, username, and userId are required.' });
       return;
     }
 
