@@ -2,9 +2,9 @@ import mongoose from 'mongoose';
 
 const thoughtSchema = new mongoose.Schema(
   {
-    thoughtText: { type: String, required: true },
-    username: { type: String, required: true },
-    name: { type: String, required: true },
+    thoughtText: { type: String, required: false },
+    username: { type: String, required: false },
+    name: { type: String, required: false },
     reactions: [],
   },
   { timestamps: true }
