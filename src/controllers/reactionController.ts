@@ -35,7 +35,7 @@ export const createReaction = async (req: Request, res: Response): Promise<void>
     const {reactionBody, username, userId} = req.body;
 
     if (!reactionBody || !username || !userId) {
-      res.status(400).json({message: 'Missing required fields...'});
+      res.status(400).json({message: 'Missing required fields... reactionBody, username, and userId are required.'});
       return;
     }
 
@@ -65,7 +65,7 @@ export const updateReaction = async (req: Request, res: Response): Promise<void>
     const {reactionBody, username} = req.body;
 
     if (!reactionBody || !username) {
-      res.status(400).json({message: 'Missing required fields...'});
+      res.status(400).json({message: 'Missing required fields... reaction body and username are required.'});
       return;
     }
 
@@ -110,7 +110,7 @@ export const addReaction = async (req: Request, res: Response): Promise<void> =>
     const {reactionBody, username} = req.body;
 
     if (!reactionBody || !username) {
-      res.status(400).json({message: 'Missing required fields...'});
+      res.status(400).json({message: 'Missing required fields... reaction body and username are required.'});
       return;
     }
 
