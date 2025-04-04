@@ -6,10 +6,19 @@
   "type": "module",
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "build": "npx tsc",
-    "start": "npm run build && node dist/server.js",
-    "seed": "node dist/seeds/seeds.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run client:build && npm run server",
+    "start:dev": "concurrently \"npm run server:dev\" \"wait-on tcp:3000 && npm run client:dev\"",
+    "start:full": "concurrently \"redis-server\" \"sleep 2 && npm run start:dev\"",
+    "server": "cd server && npm start",
+    "server:dev": "cd server && npm run dev",
+    "install": "if [ -d './server' ]; then cd server && npm i; cd ..; fi && cd client && npm i",
+    "client:build": "cd client && npm run build",
+    "client:dev": "cd client && npm run dev",
+    "build": "if [ -d './server' ]; then cd server && npm run build; cd ..; fi && cd client && npm run build",
+    "seed": "cd server && npm run seed",
+    "render-build": "npm install && npm run build",
+    "lint": "eslint . --ext .ts,.tsx"
   },
   "repository": {
     "type": "git",
@@ -28,20 +37,15 @@
     "url": "https://github.com/nathangreen1632/socialNetwork/issues"
   },
   "homepage": "https://github.com/nathangreen1632/socialNetwork#readme",
-  "dependencies": {
-    "bcrypt": "^5.1.1",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "mongodb": "^6.13.0",
-    "mongoose": "^8.10.1"
-  },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.2",
-    "@types/express": "^5.0.0",
-    "@types/mongoose": "^5.11.97",
-    "@types/node": "^22.13.4",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.1.2",
     "nodemon": "^3.1.9",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.7.3"
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.1",
+    "wait-on": "^8.0.2"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.3"
   }
 }
